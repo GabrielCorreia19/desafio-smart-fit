@@ -1,27 +1,27 @@
-<form action="" class="form-group">
+<form class="form-group" [formGroup]="formGroup">
   <div class="form-icon">
     <img src="assets/images/png/icon-hour.png" />
     Horário
   </div>
   <h3>Qual hórario você quer treinar?</h3>
   <div class="radio-wrapper">
-    <input type="radio" name="moorning" />
+    <input type="radio" name="hour" value="morning" formControlName="hour" />
     <label for="moorning">Manhã</label>
     <span>06:00 ás 12h</span>
   </div>
   <div class="radio-wrapper">
-    <input type="radio" name="afternoon" />
+    <input type="radio" name="hour" value="afternoon" formControlName="hour" />
     <label for="afternoon">Tarde</label>
     <span>12:01 ás 18h</span>
   </div>
   <div class="radio-wrapper">
-    <input type="radio" name="night" />
+    <input type="radio" name="hour" value="night" formControlName="hour" />
     <label for="night">Noite</label>
     <span>18:01 ás 23h</span>
   </div>
   <div class="checkbox-wrapper">
-    <input type="checkbox" name="show-closed" />
-    <label>Exibir unidades fechadas</label>
+    <input type="checkbox" name="showClosed" formControlName="showClosed" />
+    <label for="showClosed">Exibir unidades fechadas</label>
     <span>Resultados encontrados: {{ results.length }}</span>
   </div>
   <div class="btns-wrapper">
