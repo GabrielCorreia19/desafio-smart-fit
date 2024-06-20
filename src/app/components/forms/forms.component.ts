@@ -18,4 +18,11 @@ export class FormsComponent implements OnInit {
       showClosed: false,
     });
   }
+
+  onSubmit(): void {
+    console.log(this.formGroup.value);
+  }
+  onClean(): void {
+    this.formGroup.reset();
+  }
 }
