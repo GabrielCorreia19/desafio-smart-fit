@@ -24,35 +24,31 @@ type HOUR_INDEXES = 'morning' | 'afternoon' | 'night';
 export class FilterUnitsService {
   constructor() {}
 
-  transformWeekdays(weekday: number) {
+  transformWeekday(weekday: number) {
     switch (weekday) {
       case 0:
         return 'Dom.';
       case 6:
-        return 'Sab.';
+        return 'Sáb.';
       default:
-        return 'Seg à Sex.';
+        return 'Seg. à Sex.';
     }
   }
 
-  filterUnits(
-    unit: Location,
-    // opened: boolean,
-    open_hour: string,
-    close_hour: string
-  ) {
+  filterUnits(unit: Location, open_hour: string, close_hour: string) {
     if (!unit.schedules) return true;
+
     let open_hour_filter = parseInt(open_hour, 10);
     let close_hour_filter = parseInt(close_hour, 10);
 
-    let todays_weekday = this.transformWeekdays(new Date().getDay());
+    let todays_weekday = this.transformWeekday(new Date().getDay());
 
     for (let i = 0; i < unit.schedules.length; i++) {
-      let schedules_hour = unit.schedules[i].hour;
-      let schedules_weekday = unit.schedules[i].weekdays;
-      if (todays_weekday === schedules_weekday) {
-        if (schedules_hour !== 'Fechada') {
-          let [unit_open_hour, unit_close_hour] = schedules_hour.split(' às ');
+      let schedule_hour = unit.schedules[i].hour;
+      let schedule_weekday = unit.schedules[i].weekdays;
+      if (todays_weekday === schedule_weekday) {
+        if (schedule_hour !== 'Fechada') {
+          let [unit_open_hour, unit_close_hour] = schedule_hour.split(' às ');
           let unit_open_hour_int = parseInt(
             unit_open_hour.replace('h', ''),
             10
@@ -71,6 +67,7 @@ export class FilterUnitsService {
         }
       }
     }
+
     return false;
   }
 
