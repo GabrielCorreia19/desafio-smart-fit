@@ -4,8 +4,8 @@ export interface Location {
   content: string;
   opened: boolean;
   mask: string;
-  towels: string;
-  foutain: string;
+  towel: string;
+  fountain: string;
   locker_room: string;
   schedules: Schedules[];
 }
